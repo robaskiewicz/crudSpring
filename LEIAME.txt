@@ -1,0 +1,5 @@
+ET1) http é um protocolo de comunicação de texto que permite o envio de informações através do navegador até o servidor. Nesse caminho de envio de informações até o servidor é possível capturar dados permitindo então com que pessoas mal intencionadas consiga interceptar e pegar informações durante essa transação.
+https segue o padrão do https de envio de comunicação porém possui uma camada a mais que seria a Securty, deste modo evita com que os dados sejam capturados nesse processo de comunicação, disponibiliza um certificado que realiza a comunicação entre o cliente(navegador) e o servidor;
+
+ET2) Rest é um conjunto de príncipios de arquitetura, que se baseia no protocolo http.
+Possibilia com que os desenvolvedores web crie apis Rest de varias formas, possuindo vantagens de flexibilidades, ser leve e rapido;

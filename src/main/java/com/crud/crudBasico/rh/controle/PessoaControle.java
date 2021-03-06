@@ -3,6 +3,7 @@ package com.crud.crudBasico.rh.controle;
 
 import java.util.Optional;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,13 +43,13 @@ public class PessoaControle {
 	
 	@GetMapping("/rh/pessoas/{id}")
 	public String alterarPessoa(@PathVariable("id") long id, Model model) {
-		Optional<Pessoa> pessoaOptional = pessoaRepo.findById(id);
+		Optional<Pessoa> pessoaOpt = pessoaRepo.findById(id);
+		if (!pessoaOpt.isPresent()) {
+			throw new IllegalArgumentException("Pessoa inválida.");
+		}
 		
-//		if(pessoaOptional.equals("")) {
-//			throw new IllegalArgumentException("Pessoa Inválida");
-//		}
+		model.addAttribute("pessoa", pessoaOpt.get());
 		
-		model.addAttribute("pessoa", pessoaOptional.get());
 		return "rh/pessoas/form";
 	}
 	
@@ -56,9 +57,9 @@ public class PessoaControle {
 	public String excluirPessoa(@PathVariable("id") long id) {
 		Optional<Pessoa> pessoaOptional = pessoaRepo.findById(id);
 		
-//		if(pessoaOptional.equals("")) {
-//			throw new IllegalArgumentException("Pessoa Inválida");
-//		}
+		if(!pessoaOptional.isPresent()) {
+			throw new IllegalArgumentException("Pessoa Inválida");
+		}
 		
 		pessoaRepo.delete(pessoaOptional.get());
 		return "redirect:/rh/pessoas";
